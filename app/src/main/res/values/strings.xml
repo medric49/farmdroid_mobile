@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Farmdroid</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="fragment_title_0">Accueil</string>
+    <string name="fragment_title_1">Etats</string>
+    <string name="fragment_title_2">Eclairage</string>
+    <string name="fragment_title_3">Sécurité</string>
+</resources>
