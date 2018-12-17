@@ -1,7 +1,10 @@
 package com.farmdroid.uteam.farmdroid.utilities;
 
 
+import android.content.Context;
 import android.util.Log;
+
+import com.farmdroid.uteam.farmdroid.MainActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -75,9 +78,47 @@ public abstract class BluetoothData {
         return result;
     }
 
-    public static void treatData(char c,double value) {
-        /*
-        Log.d("**** Resultat ****","-"+c+"-  "+value);
-        */
+    public static void treatData(final char c, final double value, final Context context) {
+
+        ((MainActivity)context).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                switch (c) {
+
+                    case CODE_SEND_TEMPERATURE_VAL :
+                        ((MainActivity)context).actualizeTemp(value);
+                        break;
+                    case CODE_SEND_HUMIDITE_VAL :
+                        ((MainActivity)context).actualizeHum(value);
+                        break;
+                    case CODE_SEND_ACIDITE_VAL :
+                        ((MainActivity)context).actualizeAci(value);
+                        break;
+                    case CODE_SEND_LUMINOSITE_VAL :
+                        ((MainActivity)context).actualizeLum(value);
+                        break;
+                    case CODE_SEND_DISTANCE_VAL :
+                        ((MainActivity)context).actualizeSecurity(value);
+                        break;
+
+
+
+                    case CODE_SEND_ARROSAGE_FLAG :
+                        ((MainActivity)context).actualizeArrosageFlag(value);
+                        break;
+                    case CODE_SEND_LUMIERE_FLAG :
+                        ((MainActivity)context).actualizeLightFlag(value);
+                        break;
+                    case CODE_SEND_ACIDITE_FLAG :
+                        ((MainActivity)context).actualizeAciditeFlag(value);
+                        break;
+                    case CODE_SEND_DISTANCE_FLAG :
+                        ((MainActivity)context).actualizeDistanceFlag(value);
+                        break;
+                }
+            }
+        });
+
+
     }
 }

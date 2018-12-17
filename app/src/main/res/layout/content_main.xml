@@ -1,19 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="@dimen/fab_margin"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/temp_container"
+        android:layout_alignParentTop="true"
+        android:paddingVertical="10dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_temp_block"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/content_main_temperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:textSize="45sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="###"
+            android:id="@+id/temp_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/content_main_humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="45sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="###"
+            android:id="@+id/hum_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/content_main_acidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="45sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="###"
+            android:id="@+id/aci_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button_state"
+                android:text="@string/content_main_details"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/white"
+                android:background="@drawable/background_ripple"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/config_state"
+                android:text="@string/content_main_setting"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:background="@drawable/background_ripple"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_below="@id/temp_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingVertical="10dp"
+            android:elevation="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/background_light_block"
+            android:layout_weight="0.5"
+            android:id="@+id/light_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="@string/content_main_luminosity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/lum_text"
+                android:textSize="45sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="###"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/button_light"
+                    android:padding="10dp"
+                    android:src="@drawable/round_more_horiz_white_24"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/background_ripple"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ImageButton
+                    android:id="@+id/config_light"
+                    android:padding="10dp"
+                    android:src="@drawable/round_settings_white_24"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/background_ripple"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingVertical="10dp"
+            android:elevation="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/background_security_block"
+            android:layout_weight="0.5"
+            android:id="@+id/security_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="@string/content_main_security"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/security_text"
+                android:textSize="45sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="Save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/button_security"
+                    android:padding="10dp"
+                    android:src="@drawable/round_more_horiz_white_24"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/background_ripple"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ImageButton
+                    android:id="@+id/config_security"
+                    android:padding="10dp"
+                    android:src="@drawable/round_settings_white_24"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/background_ripple"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

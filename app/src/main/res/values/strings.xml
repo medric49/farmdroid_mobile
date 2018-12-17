@@ -6,4 +6,12 @@
     <string name="fragment_title_1">Etats</string>
     <string name="fragment_title_2">Eclairage</string>
     <string name="fragment_title_3">Sécurité</string>
+
+    <string name="content_main_temperature">Température</string>
+    <string name="content_main_humidity">Humidité</string>
+    <string name="content_main_acidity">Acidité</string>
+    <string name="content_main_details">Détails</string>
+    <string name="content_main_setting">Paramètres</string>
+    <string name="content_main_luminosity">Luminosité</string>
+    <string name="content_main_security">Sécurité</string>
 </resources>

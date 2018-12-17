@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class ConnectedThread extends Thread {
+public class ConnectedThread extends  Thread {
     private final BluetoothSocket mmSocket;
     private final InputStream mmInStream;
     private final OutputStream mmOutStream;
@@ -46,7 +46,7 @@ public class ConnectedThread extends Thread {
                 if (BluetoothData.isDataStarter(c)) {
                     double data = BluetoothData.getBluetoothData(mmInStream);
                     // Send the obtained bytes to the UI activity
-                    BluetoothData.treatData(c,data);
+                    BluetoothData.treatData(c,data,context);
                 }
 
                 buffer = new byte[1];
@@ -70,4 +70,5 @@ public class ConnectedThread extends Thread {
             mmSocket.close();
         } catch (IOException e) { }
     }
+
 }

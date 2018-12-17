@@ -27,6 +27,8 @@ import com.farmdroid.uteam.farmdroid.fragments.SecurityFragment;
 import com.farmdroid.uteam.farmdroid.fragments.StateFragment;
 import com.farmdroid.uteam.farmdroid.threads.ConnectThread;
 import com.farmdroid.uteam.farmdroid.threads.ConnectedThread;
+import com.farmdroid.uteam.farmdroid.utilities.Function;
+
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
     public static final int PAGE_NUMBRE = 4;
 
     private static final int ENABLE_REQUEST_BT = 1;
+
+    public MainFragment mainFragment = null;
+    public StateFragment stateFragment = null;
+    public BrightnessFragment brightnessFragment = null;
+    public SecurityFragment securityFragment = null;
 
     private BluetoothAdapter mBluetoothAdapter;
     // Create a BroadcastReceiver for ACTION_FOUND.
@@ -67,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private ViewPager viewPager = null;
-
+    public ViewPager viewPager = null;
+    public TabLayout tabLayout = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(pagerAdapter);
 
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(PAGE_0).setIcon(R.drawable.round_home_white_24);
@@ -174,25 +181,25 @@ public class MainActivity extends AppCompatActivity {
         switch (index)
         {
             case PAGE_0:
-                MainFragment mainFragment = new MainFragment();
+                mainFragment = new MainFragment();
                 Bundle bundle1 = new Bundle();
                 bundle1.putInt("_"+PAGE_0,index);
                 mainFragment.setArguments(bundle1);
                 return mainFragment;
             case PAGE_1:
-                StateFragment stateFragment = new StateFragment();
+                stateFragment = new StateFragment();
                 Bundle bundle0 = new Bundle();
                 bundle0.putInt("_"+PAGE_1,index);
                 stateFragment.setArguments(bundle0);
                 return stateFragment;
             case PAGE_2:
-                BrightnessFragment brightnessFragment = new BrightnessFragment();
+                brightnessFragment = new BrightnessFragment();
                 Bundle bundle2 = new Bundle();
                 bundle2.putInt("_"+PAGE_2,index);
                 brightnessFragment.setArguments(bundle2);
                 return brightnessFragment;
             case PAGE_3:
-                SecurityFragment securityFragment = new SecurityFragment();
+                securityFragment = new SecurityFragment();
                 Bundle bundle3 = new Bundle();
                 bundle3.putInt("_"+PAGE_3,index);
                 securityFragment.setArguments(bundle3);
@@ -236,5 +243,37 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+    public void actualizeTemp(double temp) {
+        this.mainFragment.temp_text.setText(Function.formatTemp(temp));
+    }
+    public void actualizeHum(double hum) {
+        this.mainFragment.hum_text.setText(Function.formatHum(hum));
+    }
+    public void actualizeAci(double aci) {
+        this.mainFragment.aci_text.setText(Function.formatAci(aci));
+    }
+    public void actualizeLum(double lum) {
+        this.mainFragment.lum_text.setText(Function.formatLight(lum));
+    }
+    public void actualizeSecurity(double distance) {
+
+    }
+
+
+    public void actualizeArrosageFlag(double flag) {
+
+    }
+    public void actualizeLightFlag(double flag) {
+
+    }
+    public void actualizeAciditeFlag(double flag) {
+
+    }
+    public void actualizeDistanceFlag(double flag) {
+
+    }
+
 
 }
