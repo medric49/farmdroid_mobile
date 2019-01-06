@@ -17,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -27,8 +28,10 @@ import com.farmdroid.uteam.farmdroid.fragments.SecurityFragment;
 import com.farmdroid.uteam.farmdroid.fragments.StateFragment;
 import com.farmdroid.uteam.farmdroid.threads.ConnectThread;
 import com.farmdroid.uteam.farmdroid.threads.ConnectedThread;
+import com.farmdroid.uteam.farmdroid.utilities.Config;
 import com.farmdroid.uteam.farmdroid.utilities.Function;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     public StateFragment stateFragment = null;
     public BrightnessFragment brightnessFragment = null;
     public SecurityFragment securityFragment = null;
+
+    public ArrayList<Pair<Character,String>> data = new ArrayList<>();
 
     private BluetoothAdapter mBluetoothAdapter;
     // Create a BroadcastReceiver for ACTION_FOUND.
@@ -83,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Config.initialize(this);
 
         final ActionsPagerAdapter pagerAdapter = new ActionsPagerAdapter(getSupportFragmentManager());
         viewPager = (ViewPager) findViewById(R.id.container);
@@ -131,18 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void startBluetoothActivity() {
         Toast.makeText(this,"Bluetooth is activated !!!",Toast.LENGTH_LONG).show();
-
-        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-
-        if (pairedDevices.size() > 0) {
-            // There are paired devices. Get the name and address of each paired device.
-            String list = "";
-            for (BluetoothDevice device : pairedDevices) {
-                String deviceName = device.getName();
-                String deviceHardwareAddress = device.getAddress(); // MAC address
-                list += deviceName+" ===> "+deviceHardwareAddress+"\n";
-            }
-        }
 
         mBluetoothAdapter.startDiscovery();
 

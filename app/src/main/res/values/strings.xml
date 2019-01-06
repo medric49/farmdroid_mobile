@@ -14,4 +14,14 @@
     <string name="content_main_setting">Paramètres</string>
     <string name="content_main_luminosity">Luminosité</string>
     <string name="content_main_security">Sécurité</string>
+
+    <string name="dialog_param_state_temp_max">Temp. Max (T°)</string>
+    <string name="dialog_param_state_hum_max">Hum. Max (%)</string>
+    <string name="dialog_param_state_arrosage_auto">Arrosage auto</string>
+    <string name="dialog_param_state_arrosage_active">Arrosage Actif</string>
+
+    <string name="incorrect_value">Valeurs incorrects</string>
+
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
 </resources>

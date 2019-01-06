@@ -38,13 +38,11 @@ public abstract class BluetoothData {
     public static final char[] CODE = new char[] {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s'};
 
     public static boolean isDataStarter(char c) {
-        boolean result = false;
-        
         for (char i : CODE) {
             if (i == c)
                 return true;
         }
-        return result;
+        return false;
     }
 
     public static double getBluetoothData(InputStream mmInStream) {
@@ -118,7 +116,9 @@ public abstract class BluetoothData {
                 }
             }
         });
+    }
 
+    public static void sendData() {
 
     }
 }
