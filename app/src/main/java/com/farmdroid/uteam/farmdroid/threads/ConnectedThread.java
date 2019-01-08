@@ -57,7 +57,6 @@ public class ConnectedThread extends  Thread {
 
                     Pair<Character,String> d = ((MainActivity)context).data.get(0);
                     String string = ":"+d.first+d.second+"_";
-                    Log.d("***** sent value : ",string+"  : "+ string.length());
                     ((MainActivity)context).data.remove(0);
                     try {
                         write(string.getBytes());

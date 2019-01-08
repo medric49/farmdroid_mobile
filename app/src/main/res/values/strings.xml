@@ -20,8 +20,33 @@
     <string name="dialog_param_state_arrosage_auto">Arrosage auto</string>
     <string name="dialog_param_state_arrosage_active">Arrosage Actif</string>
 
+    <string name="dialog_param_light_lum_max">Lum. Max (%)</string>
+    <string name="dialog_param_light_lum_auto">Eclairage auto</string>
+    <string name="dialog_param_light_lum_active">Eclairage Actif</string>
+
+    <string name="dialog_param_distance_max">Rayon sec. (cm)</string>
+    <string name="dialog_param_distance_auto">Sécurité active</string>
+
+
     <string name="incorrect_value">Valeurs incorrects</string>
+
+    <string name="settings">Configurations</string>
+
+    <string name="content_state_title">Arrosage</string>
+    <string name="content_brightness_title">Eclairage</string>
 
     <string name="save">Enregistrer</string>
     <string name="cancel">Annuler</string>
+
+    <string name="arrosage_state_1">Allumé</string>
+    <string name="arrosage_state_0">Eteint</string>
+
+    <string name="eclairage_state_1">Allumé</string>
+    <string name="eclairage_state_0">Eteint</string>
+
+    <string name="securite_state_1">Dangé</string>
+    <string name="securite_state_0">Sure</string>
+
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
 </resources>

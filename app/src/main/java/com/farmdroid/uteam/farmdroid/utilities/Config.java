@@ -140,7 +140,7 @@ public abstract class Config {
 
     }
     
-    public static void setLumiereAutorse(String value, Context context) {
+    public static void setLumiereAutorise(String value, Context context) {
         LUMIERE_AUTORISE = value;
         document.getRootElement().getChild(TAG_LUMIERE_AUTORISE).setText(value);
         setOutput(context);

@@ -8,4 +8,6 @@
     <color name="soft_black">#b4000000</color>
 
     <color name="blue">#20468e</color>
+
+    <color name="danger">#c12c54</color>
 </resources>

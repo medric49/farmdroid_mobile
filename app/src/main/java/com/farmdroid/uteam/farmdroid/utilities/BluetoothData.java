@@ -98,9 +98,6 @@ public abstract class BluetoothData {
                     case CODE_SEND_DISTANCE_VAL :
                         ((MainActivity)context).actualizeSecurity(value);
                         break;
-
-
-
                     case CODE_SEND_ARROSAGE_FLAG :
                         ((MainActivity)context).actualizeArrosageFlag(value);
                         break;

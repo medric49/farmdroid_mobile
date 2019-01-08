@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <EditText
+            android:inputType="numberDecimal"
             android:id="@+id/temp_max"
             android:layout_weight="0.5"
             android:layout_width="match_parent"
@@ -32,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <EditText
+            android:inputType="numberDecimal"
             android:id="@+id/hum_max"
             android:layout_weight="0.5"
             android:layout_width="match_parent"

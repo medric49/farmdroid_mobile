@@ -1,5 +1,6 @@
 package com.farmdroid.uteam.farmdroid;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -7,8 +8,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -146,27 +149,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public void treatBluetoothCommunication(BluetoothSocket socket) {
         (new ConnectedThread(socket,this)).start();
@@ -241,32 +223,101 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void actualizeTemp(double temp) {
-        this.mainFragment.temp_text.setText(Function.formatTemp(temp));
+        try {
+            this.mainFragment.temp_text.setText(Function.formatTemp(temp));
+            this.stateFragment.temp_text.setText(Function.formatTemp(temp));
+        }
+        catch (NullPointerException e) {
+        }
+
     }
     public void actualizeHum(double hum) {
-        this.mainFragment.hum_text.setText(Function.formatHum(hum));
+        try {
+            this.mainFragment.hum_text.setText(Function.formatHum(hum));
+            this.stateFragment.hum_text.setText(Function.formatHum(hum));
+        }
+        catch (NullPointerException e) {
+
+        }
     }
     public void actualizeAci(double aci) {
-        this.mainFragment.aci_text.setText(Function.formatAci(aci));
+        try {
+            this.mainFragment.aci_text.setText(Function.formatAci(aci));
+            this.stateFragment.aci_text.setText(Function.formatAci(aci));
+        }
+        catch (NullPointerException e) {
+
+        }
     }
     public void actualizeLum(double lum) {
-        this.mainFragment.lum_text.setText(Function.formatLight(lum));
+        try {
+            this.mainFragment.lum_text.setText(Function.formatLight(lum));
+            this.brightnessFragment.lum_text.setText(Function.formatLight(lum));
+        }
+        catch (NullPointerException e) {
+
+        }
     }
     public void actualizeSecurity(double distance) {
+
+    }
+    public void actualizeAciditeFlag(double flag) {
+
 
     }
 
 
     public void actualizeArrosageFlag(double flag) {
+        try {
+            this.stateFragment.state.setText(Function.arrosageState((int)flag,this));
+            if (flag==1) {
+                this.stateFragment.state.setTextColor(getResources().getColor(R.color.colorPrimary));
+            }
+            else
+                this.stateFragment.state.setTextColor(getResources().getColor(R.color.white));
 
+        }
+        catch (NullPointerException e) {
+
+        }
     }
+
     public void actualizeLightFlag(double flag) {
+        try {
+            this.brightnessFragment.state.setText(Function.eclairageState((int)flag,this));
+            if (flag==1) {
+                this.brightnessFragment.state.setTextColor(getResources().getColor(R.color.colorPrimary));
+            }
+            else
+                this.brightnessFragment.state.setTextColor(getResources().getColor(R.color.white));
+        }
+        catch (NullPointerException e) {
 
+        }
     }
-    public void actualizeAciditeFlag(double flag) {
 
-    }
+
     public void actualizeDistanceFlag(double flag) {
+        try {
+            this.mainFragment.security_text.setText(Function.securityState((int)flag,this));
+            if (flag==1) {
+                this.mainFragment.security_text.setTextColor(getResources().getColor(R.color.danger));
+            }
+            else
+                this.mainFragment.security_text.setTextColor(getResources().getColor(R.color.colorAccent));
+
+
+            if (flag ==1) {
+                this.securityFragment.security_text.setImageResource(R.drawable.unsafe);
+            }
+            else
+            {
+                this.securityFragment.security_text.setImageResource(R.drawable.safe);
+            }
+        }
+        catch (NullPointerException e) {
+
+        }
 
     }
 
